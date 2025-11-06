@@ -1,5 +1,4 @@
 import './App.css'
-import { ImgUrl } from './components/ImgUrl'
 import {Hero} from './components/Hero'
 import { Main } from './components/Main'
 import { Galeria } from './components/Galeria'
