@@ -37,3 +37,7 @@
     transform: translateX(-50%) translateY(-20px);
   }
 }
+
+.hero{
+  height: 100vh;
+}
