@@ -1,16 +1,17 @@
-import { ImgUrl } from "./ImgUrl";
-import { usePerro } from "../context/CargaImagenContext";
-import { MostrarDescripcion } from "../hooks/mostrarDescipcion";
+import { CargandoImagen } from "../hooks/useCargandoImagen";
+import { MostrarImagen } from "../hooks/mostrarImagen";
+import { useDescripcionRandog } from "../services/useDescripcionRandog";
+import { Cargando } from "./Cargando";
 
 export function Main(){
-    const {url, cargarImagen, imagenMain} = usePerro()
-    const {cargando, setCargando} = imagenMain
-    const {descripcion, cargarDescripcion} = MostrarDescripcion()
+    const {url, cargarImagen} = MostrarImagen()
+    const {cargando, setCargando} = CargandoImagen()
+    const {descripcion, nuevaDescripcion} = useDescripcionRandog()
 
     const handleClick = () => {
         setCargando(true)
         cargarImagen()
-        cargarDescripcion()
+        nuevaDescripcion()
     }
     return(
         <main>
@@ -19,7 +20,13 @@ export function Main(){
             </div>
             <div>
                 <h2>¡Que perro eres?</h2>
-                <ImgUrl url={url} cargando={cargando} setCargando={setCargando}></ImgUrl>
+                {cargando && <Cargando/> }
+                    <img
+                        className= {`modal__imagen ${cargando  ? "oculto" : "visible"}`}
+                        src={url}
+                        alt={"Perro random de la API"}
+                        onLoad={() => setCargando(false)}//cuando se carga, se oculta el componente Cargando
+                    />
                 <p>{descripcion}</p>
                 <button onClick={handleClick}>Cambiar de perrito</button>
             </div>

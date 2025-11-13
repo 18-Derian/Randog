@@ -1,9 +1,10 @@
-import { usePerro } from "../context/CargaImagenContext";
-import { ImgUrl } from "./ImgUrl";
+import { CargandoImagen } from "../hooks/useCargandoImagen";
+import { MostrarGaleria } from "../hooks/useMostrarGaleria";
+import { Cargando } from "./Cargando";
 
 export function Galeria() {
-    const {urls, cargarImagenes, imagenGaleria} = usePerro()
-    const {cargando, setCargando} = imagenGaleria
+    const {urls, cargarImagenes} = MostrarGaleria()
+    const {cargando, setCargando} = CargandoImagen()
 
     const handleClick = () => {
         setCargando(true)
@@ -21,16 +22,23 @@ export function Galeria() {
                 el color o el origen, lo que lo hace especial es todo lo que significa para ti.
             </p>
            <button onClick={handleClick}>Cambiar Galería</button> 
-            <div>
+            
                 {urls.length > 0 ? (
-                        urls.map((url, i) => (
-                            <ImgUrl key={i} url={url} cargando={cargando} setCargando={setCargando}></ImgUrl>
-                        ))
-                    ) : (
+                    urls.map((url, i) => (
+                        <div>
+                            {cargando && <Cargando/>}
+                            <img
+                                key={i}
+                                className= {`modal__imagen ${cargando  ? "oculto" : "visible"}`}
+                                src={url}                                alt={"Perro random de la API"}
+                                onLoad={() => setCargando(false)}//cuando se carga, se oculta el componente Cargando
+                            />
+                        </div>
+                    ))
+                ) : (
                         <p>Cargando perritos</p>
                     )
                 }
-            </div>
         </section>
     )
 }

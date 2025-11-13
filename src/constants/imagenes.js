@@ -37,3 +37,16 @@ export const PERROS_PC = {
     p6f2: p6f2,
     p7f2: p7f2
 }
+
+export const PERROS_MV = {
+    p1f1m: p1f1m,
+    p2f1m: p2f1m,
+    p3f1m: p3f1m,
+    p1f2m: p1f2m,
+    p2f2m: p2f2m,
+    p3f2m: p3f2m
+}
+
+export const PERRO_CHISMOSO = chismoso
+
+export const PERRO_FLOJO = flojo

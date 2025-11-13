@@ -1,34 +1,23 @@
-import { ImgUrl } from "./ImgUrl";
-import { usePerro } from "../context/CargaImagenContext";
+import { Cargando } from "./Cargando";
+import './Modal.css'
 
-export function Modal({cerrarModal, descripcion}) {
+export function Modal({url, cerrarModal, descripcion, cargando, setCargando}) {
 
-  const {url, imagenModal} = usePerro()
-  const {cargando, setCargando} = imagenModal
+  console.log(cargando)
+  console.log(url)
   return (
-    <div
-      style={{
-        position: "fixed",
-        inset: 0,
-        backgroundColor: "rgba(0,0,0,0.6)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        zIndex: 1000,
-        color: "black"
-      }}
-    >
-      <div
-        style={{
-          background: "#fff",
-          padding: "20px",
-          borderRadius: "12px",
-          textAlign: "center"
-        }}
-      >
-        <button onClick={cerrarModal}>Cerrar</button>
+    <div className="modal">
+      <div className="modal__contenedor">
+        {cargando && <Cargando/> }
+        <img
+          className= {`modal__imagen ${cargando  ? "oculto" : "visible"}`}
+          src={url}
+          alt={"Perro random de la API"}
+          onLoad={() => setCargando(false)}//cuando se carga, se oculta el componente Cargando
+        />
+                    
         <p>{descripcion}</p>
-        <ImgUrl url = {url} cargando={cargando} setCargando={setCargando}></ImgUrl>
+        <button className="boton boton--principal" onClick={cerrarModal}>Cerrar</button>
       </div>
     </div>
   );

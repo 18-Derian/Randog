@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 export function useDescripcionRandog() {
     const FRASES_GRACIOSAS = [
         "Tiene cara de que come tacos sin pedir permiso.",
@@ -12,6 +14,17 @@ export function useDescripcionRandog() {
         "Si el chisme tuviera cara, sería este peligroso.",
         "Este perrito quiere saber: ¿por que le das croquetas de las baratas?."
     ]
-    const indice = Math.floor(Math.random() * FRASES_GRACIOSAS.length)
-    return FRASES_GRACIOSAS[indice]
+
+    const [descripcion, setDescripcion] = useState(() => {
+        const indice = Math.floor(Math.random() * FRASES_GRACIOSAS.length);
+        return FRASES_GRACIOSAS[indice];
+    })
+
+    const nuevaDescripcion = () => {
+        const indice = Math.floor(Math.random() * FRASES_GRACIOSAS.length);
+        setDescripcion(FRASES_GRACIOSAS[indice]);
+    };
+
+    console.log(descripcion)
+    return {descripcion, nuevaDescripcion}
 }

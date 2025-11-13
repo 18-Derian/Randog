@@ -11,7 +11,6 @@ export function MostrarGaleria() {
         const nuevasUrls = await Promise.all(promesas);
 
         setUrls(nuevasUrls);
-        console.log(nuevasUrls)
     };
 
     useEffect(() => {
