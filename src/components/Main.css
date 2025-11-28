@@ -1,0 +1,58 @@
+.caja-blanca--main {
+  height: 70vh;
+  max-width: 100%;
+  position: relative;
+  position: relative;
+  padding-top: 50px;
+}
+
+@media only screen and (min-width: 990px) {
+  .main {
+    margin-top: 150px;
+  }
+}
+
+.main__separador {
+  margin-bottom: 150px;
+}
+
+@media only screen and (min-width: 990px) {
+  .main__separador {
+    margin: 0 150px 0 0;
+  }
+}
+
+.imagen--main {
+  object-fit: contain;
+  width: 100%;
+  height: 450px;
+  overflow: hidden;
+}
+
+.caja__perro--arriba {
+  position: absolute;
+  top: -21%;
+  width: 300px;
+}
+
+.caja__perro--izquierda {
+  display: none;
+}
+
+@media only screen and (min-width: 990px) {
+  .caja__perro--izquierda {
+    display: inline-block;
+    position: absolute;
+    left: -45%;
+    bottom: 0;
+    z-index: -1000;
+    width: 250px;
+    height: auto;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .caja__perro--izquierda {
+    left: -35%;
+  }
+}

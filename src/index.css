@@ -4,18 +4,18 @@
   box-sizing: border-box;
 }
 
-:root{
-  --color-primary: #0d3b66;   /* Texto principal */
+:root {
+  --color-primary: #0d3b66; /* Texto principal */
   --color-secondary: #ee964b; /* Botones / acentos */
-  --color-background: #faf0ca;/* Fondo */
-  --color-hover: #ffa353;     /* Hover o foco */
+  --color-background: #faf0ca; /* Fondo */
+  --color-hover: #ffa353; /* Hover o foco */
   --color-parrafos: #2c2c2c;
   --color-background-cajas: #fff;
   --borde-radius-principal: 15px;
   --borde: 3px;
 }
 
-body{
+body {
   font-family: "Puritan";
   background-color: var(--color-background);
 }
@@ -25,7 +25,7 @@ h2,
 h3,
 h4,
 h5,
-button{
+button {
   font-family: "Luckiest Guy";
   color: var(--color-primary);
 }
@@ -40,19 +40,19 @@ span {
   color: var(--color-parrafos);
 }
 
-.boton{
+.boton {
   padding: 15px;
   border-radius: var(--borde-radius-principal);
   border: var(--borde) solid transparent;
   cursor: pointer;
 }
 
-.boton--principal{
+.boton--principal {
   background-color: var(--color-secondary);
-  transition: all .3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
-.boton--principal:hover{
+.boton--principal:hover {
   background-color: var(--color-hover);
 }
 
@@ -91,10 +91,44 @@ span {
   }
 }
 
-.texto-centro{
+.texto-centro {
   text-align: center;
 }
 
-.oculto{
+.visible {
+  display: block !important;
+}
+
+.oculto {
+  display: none !important;
+}
+
+.caja-blanca {
+  background: var(--color-background-cajas);
+  padding: 20px;
+  border-radius: 30px;
+  max-width: 90%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  align-items: center;
+  gap: 10px;
+}
+
+@media only screen and (min-width: 992px) {
+  .grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.imagen {
+  border-radius: 15px;
   display: none;
 }

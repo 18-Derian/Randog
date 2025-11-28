@@ -5,6 +5,7 @@ export function MostrarImagen (){
     const [url, setUrl] = useState()
 
     const cargarImagen = () => {
+
         useRandog().then((newUrl) => {
             setUrl(newUrl)
         })

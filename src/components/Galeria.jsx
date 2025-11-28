@@ -2,6 +2,8 @@ import { CargandoImagen } from "../hooks/useCargandoImagen";
 import { MostrarGaleria } from "../hooks/useMostrarGaleria";
 import { Cargando } from "./Cargando";
 
+import "./Galeria.css"
+
 export function Galeria() {
     const {urls, cargarImagenes} = MostrarGaleria()
     const {cargando, setCargando} = CargandoImagen()
@@ -12,7 +14,7 @@ export function Galeria() {
     }
  
     return(
-        <section>
+        <section className="container texto-centro galeria">
             <h2>
                 Galería de perritos
             </h2>
@@ -21,24 +23,28 @@ export function Galeria() {
                 porque su amor, su mirada y su lealtad son únicos. No importa el tamaño, 
                 el color o el origen, lo que lo hace especial es todo lo que significa para ti.
             </p>
-           <button onClick={handleClick}>Cambiar Galería</button> 
+           <button className="boton boton--principal" onClick={handleClick}>Cambiar Galería</button> 
             
-                {urls.length > 0 ? (
-                    urls.map((url, i) => (
-                        <div>
-                            {cargando && <Cargando/>}
-                            <img
-                                key={i}
-                                className= {`modal__imagen ${cargando  ? "oculto" : "visible"}`}
-                                src={url}                                alt={"Perro random de la API"}
-                                onLoad={() => setCargando(false)}//cuando se carga, se oculta el componente Cargando
-                            />
-                        </div>
-                    ))
-                ) : (
-                        <p>Cargando perritos</p>
-                    )
-                }
+            <div className="galeria__contenedor">
+                <div className="galeria__contenedor--scroll">
+                    {urls.length > 0 ? (
+                        urls.map((url, i) => (
+                            <div className="galeria__contenedor-imagen" key={i}>
+                                {cargando && <Cargando/>}
+                                <img
+                                    className= {`modal__imagen ${cargando  ? "oculto" : "visible"}`}
+                                    src={url}                                
+                                    alt={"Perro random de la API"}
+                                    onLoad={() => setCargando(false)}//cuando se carga, se oculta el componente Cargando
+                                />
+                            </div>
+                        ))
+                    ) : (
+                            <p>Cargando perritos</p>
+                        )
+                    }
+                </div>
+            </div>
         </section>
     )
 }

@@ -9,31 +9,12 @@
 }
 
 .modal__contenedor {
-  background: var(--color-background-cajas);
-  padding: 20px;
-  border-radius: 30px;
-  max-width: 90%;
   width: 400px;
   height: auto;
-  display: flex;
-  gap: 10px;
-  flex-direction: column;
 }
 
-.modal__imagen {
-  border-radius: 15px;
+.imagen--modal {
   max-height: 100%;
   max-width: 100%;
   object-fit: contain;
-  display: block;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.modal__imagen.visible{
-  opacity: 1;
-}
-
-.modal__imagen.oculto{
-  opacity: 0;
 }
